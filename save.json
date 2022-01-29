@@ -1,0 +1,5226 @@
+{
+  "nickname": "Viet",
+  "exercises-editors": {
+    "base_fonctions_paires": [
+      1636711550.428098,
+      "let swap (a,b) = (b,a)\n                 \nlet nom(nom,age)=nom\nlet age(nom,age)=age\n  \nlet bonjour(nom,age)= \"Bonjour \" ^ nom ^ \" !\"  "
+    ],
+    "base_fonctions_paires_2": [
+      1636711591.279725,
+      "let annee_suivante (a, b, c) = (a + 1, b, c)\n\n                               \nlet mois_suivant (a, b, c) =  \n  if  b < 12 then ( a, b + 1, c)\n  else ( a +1, 1, c)"
+    ],
+    "base_fonctions_paires_3": [
+      1636711620.946721,
+      "let choose test (a,b) = \n  if test then a else b\n    \nlet better (x1, y1) (x2, y2) = \n  if x1 > x2 then y1\n  else if x1 == x2 then y1\n  else y2;;"
+    ],
+    "base_fonctions_paires_4": [
+      1636711645.895163,
+      "let mini x y = if x>y then y else x\nlet maxi x y = if x>y then x else y\nlet order x y = if x>y then (y,x) else (x,y)    "
+    ],
+    "base_option": [
+      1636711472.460782,
+      "let int_or_0 a= \n  match a with\n  |None -> 0\n  |Some a -> a\n\nlet not_0 b= if b = 0 then None else Some b \n\n\n\n\n\nlet apply_opt f_opt x_opt = \n  match x_opt with\n  |None -> None\n  | Some x -> \n      match f_opt with \n      |None -> None\n      |Some f -> Some (f x)"
+    ],
+    "base_option_2": [
+      1636711399.021629,
+      "let multiply a b_opt = \n  match b_opt with \n  |None -> None\n  |Some b_opt -> Some(a*b_opt)\n"
+    ],
+    "base_types_somme": [
+      1636711696.67399,
+      "let description address =\n  match address with\n  | Email mail ->\n      \"email\"\n  | Telephone (country_code, nombre)->\n      \"telephone\""
+    ],
+    "base_types_somme_2": [
+      1636711751.000324,
+      "let signe a =\n  if a > 0\n  then Strictement_positif\n  else if a <0 \n  then Strictement_negatif\n  else Nul\n  \n                          \nlet positif signe =\n  match signe with\n  | Strictement_positif -> true\n  | Nul -> true\n  | Strictement_negatif -> false"
+    ],
+    "base_types_somme_3": [
+      1643461093.669,
+      ""
+    ],
+    "recursion_list_append": [
+      1636710778.680324,
+      "let rec append li1 li2 =\n  match li1 with\n  | [] -> li2\n  | p :: r -> p :: append r li2 "
+    ],
+    "recursion_list_bases": [
+      1636711072.972607,
+      "let rec length li =\n  match li with \n  |[] -> 0\n  |a :: rest -> 1 + length rest\n\n                  \nlet rec nth n li = \n  match li with\n  |[] -> None\n  |a :: rest -> \n      if n = 0 then Some a\n      else nth (n-1) rest\n          \n          \nlet last li =\n  let rec last' a li =\n    match li with\n    | [] -> Some a\n    | b :: rest ->\n        last' b rest\n  in\n  match li with\n  | [] -> None\n  | a :: rest -> last' a rest\n\n\n(*\nlet rec last li =\n  match li with\n  | [] -> None\n  | a :: rest ->\n      ( match last rest with\n        | None -> Some a\n        | Some last -> Some last\n      )\n*)\n"
+    ],
+    "recursion_list_map": [
+      1638383141.965217,
+      "let rec map f list =\n  match list with \n  |[] -> list\n  |g::h -> f(g) ::map f(h)\n  \n             \nlet rec add_2_each list = \n  match list with \n  |[] -> []\n  |a :: b -> (a+2) :: add_2_each b"
+    ],
+    "recursion_list_rev": [
+      1636711072.972607,
+      "let rec rev_append li1 li2 = \n  match li1 with \n  |[] -> li2\n  |p::r -> rev_append r (p::li2)\n             \nlet rev li = \n  let rec rev_append li1 li2 = \n    match li1 with \n    |[] -> li2\n    |p::r -> rev_append r (p::li2)\n  in rev_append li []\n  "
+    ],
+    "recursion_moves": [
+      1636711148.500911,
+      "let rec count_moves m =\n  match m with\n  | Done -> 0\n  | Slide (v, chemin) -> 1 + count_moves chemin\n  | Goto (p, chemin) -> 1 + count_moves chemin \n\n  \nlet rec end_point depart m =\n  match m with\n  |Done -> depart\n  |Slide (v, chemin) -> let point = slide depart v in end_point point chemin\n  |Goto (p, chemin) -> end_point p chemin\n  \n(*  \nlet rec end_point point m = \n  match m with\n  |Done -> point\n  |Goto (p, reste) -> end_point p reste\n  |Slide (v, reste) -> end_point (slide point v) reste\n*)\n\nlet rec points p moves =\n  match moves with\n  |Done -> [p]\n  |Goto (point, chemin) -> p :: points point chemin\n  |Slide (vect, chemin) -> p::points (slide p vect) chemin\n                           \n"
+    ]
+  },
+  "exercises": {
+    "base_fonctions_paires": {
+      "grade": 100,
+      "solution": "let swap (a,b) = (b,a)\n                 \nlet nom(nom,age)=nom\nlet age(nom,age)=age\n  \nlet bonjour(nom,age)= \"Bonjour \" ^ nom ^ \" !\"  ",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "swap",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "swap",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "swap (4, true)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(true, 4)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "swap (-2, false)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(false, -2)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "swap (-2, false)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(false, -2)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "swap",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "swap (false, 3)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(3, false)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "swap (false, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(1, false)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "swap (true, 0)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(0, true)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "Personnes"
+            }
+          ],
+          "contents": [
+            {
+              "section": [
+                {
+                  "text": "nom",
+                  "display": "code"
+                }
+              ],
+              "contents": [
+                {
+                  "message": [
+                    {
+                      "text": "Found"
+                    },
+                    {
+                      "text": "nom",
+                      "display": "code"
+                    },
+                    {
+                      "text": "with compatible type."
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "nom (\"OCP\", -1)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "\"OCP\"",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "nom (\" ba#//OCaml4456beba\", 2)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "\" ba#//OCaml4456beba\"",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "nom (\",  \", -3)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "\",  \"",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "nom (\"#OCP, ba#bebe\", 2)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "\"#OCP, ba#bebe\"",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "nom (\"ba#-# //OCP\", 0)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "\"ba#-# //OCP\"",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                }
+              ]
+            },
+            {
+              "section": [
+                {
+                  "text": "age",
+                  "display": "code"
+                }
+              ],
+              "contents": [
+                {
+                  "message": [
+                    {
+                      "text": "Found"
+                    },
+                    {
+                      "text": "age",
+                      "display": "code"
+                    },
+                    {
+                      "text": "with compatible type."
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "age (\" OCPbe\", -2)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "-2",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "age (\" OCP, OCaml4456-//\", -2)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "-2",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "age (\"be\", 1)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "1",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "age (\"  ba-,  4456 4456\", 3)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "3",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "age (\"be, //4456//OCPOCP\", -3)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "-3",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "Personnes: bonjour"
+            }
+          ],
+          "contents": [
+            {
+              "section": [
+                {
+                  "text": "bonjour",
+                  "display": "code"
+                }
+              ],
+              "contents": [
+                {
+                  "message": [
+                    {
+                      "text": "Found"
+                    },
+                    {
+                      "text": "bonjour",
+                      "display": "code"
+                    },
+                    {
+                      "text": "with compatible type."
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "bonjour (\"Toto\", 3)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "\"Bonjour Toto !\"",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Computing"
+                    },
+                    {
+                      "text": "bonjour (\"Titi\", 0)",
+                      "display": "code"
+                    }
+                  ],
+                  "result": "informative"
+                },
+                {
+                  "message": [
+                    {
+                      "text": "Correct value"
+                    },
+                    {
+                      "text": "\"Bonjour Titi !\"",
+                      "display": "code"
+                    }
+                  ],
+                  "result": 1
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711550.428098
+    },
+    "base_fonctions_paires_2": {
+      "grade": 100,
+      "solution": "let annee_suivante (a, b, c) = (a + 1, b, c)\n\n                               \nlet mois_suivant (a, b, c) =  \n  if  b < 12 then ( a, b + 1, c)\n  else ( a +1, 1, c)",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "annee_suivante",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "annee_suivante",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "annee_suivante (2019, 10, 3)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(2020, 10, 3)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "annee_suivante (2020, 1, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(2021, 1, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "annee_suivante (-50, 3, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(-49, 3, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "mois_suivant",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "mois_suivant",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mois_suivant (2019, 10, 3)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(2019, 11, 3)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mois_suivant (2020, 10, 3)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(2020, 11, 3)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mois_suivant (-50, 3, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(-50, 4, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mois_suivant (2019, 12, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(2020, 1, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mois_suivant (2020, 12, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(2021, 1, 1)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711591.279725
+    },
+    "base_fonctions_paires_3": {
+      "grade": 100,
+      "solution": "let choose test (a,b) = \n  if test then a else b\n    \nlet better (x1, y1) (x2, y2) = \n  if x1 > x2 then y1\n  else if x1 == x2 then y1\n  else y2;;",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "choose",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "choose",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose false (2, 2)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "2",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose true (1, 4)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "1",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose false (-1, -4)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-4",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose true (-5, -2)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-5",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose false (-1, -1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-1",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "choose",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose true (true, true)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "true",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose false (false, false)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "false",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose true (true, true)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "true",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose true (true, true)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "true",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "choose true (true, false)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "true",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "better",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "better",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "better (1, 10) (2, 20)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "20",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "better (2, 20) (1, 10)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "20",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "better (-3, 4) (-5, 6)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "4",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "better",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "better (1, true) (2, false)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "false",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "better (2, true) (1, false)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "true",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "better (-3, true) (-5, false)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "true",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711620.946721
+    },
+    "base_fonctions_paires_4": {
+      "grade": 100,
+      "solution": "let mini x y = if x>y then y else x\nlet maxi x y = if x>y then x else y\nlet order x y = if x>y then (y,x) else (x,y)    ",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "mini",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "mini",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mini 1 -4",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-4",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mini 3 4",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "3",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mini 0 1",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "0",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mini 4 3",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "3",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "mini 2 -1",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-1",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "maxi",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "maxi",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "maxi -1 -1",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-1",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "maxi -4 -5",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-4",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "maxi 1 -4",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "1",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "maxi -4 2",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "2",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "maxi 0 0",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "0",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "order",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "order",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "order 4 -4",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(-4, 4)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "order -2 -1",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(-2, -1)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "order -1 -1",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(-1, -1)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "order 0 2",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(0, 2)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "order 0 2",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(0, 2)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711645.895163
+    },
+    "base_option": {
+      "grade": 100,
+      "solution": "let int_or_0 a= \n  match a with\n  |None -> 0\n  |Some a -> a\n\nlet not_0 b= if b = 0 then None else Some b \n\n\n\n\n\nlet apply_opt f_opt x_opt = \n  match x_opt with\n  |None -> None\n  | Some x -> \n      match f_opt with \n      |None -> None\n      |Some f -> Some (f x)",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "int_or_0",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "int_or_0",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "int_or_0 (Some 1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "1",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "int_or_0 (Some 3)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "3",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "int_or_0 (Some (-2))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-2",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "int_or_0 None",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "0",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "int_or_0 (Some 4)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "4",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "not_0",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "not_0",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "not_0 2",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 2)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "not_0 123",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 123)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "not_0 -3",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some (-3))",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "not_0 0",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "not_0 2147483647",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 2147483647)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "not_0 -2147483648",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some (-2147483648))",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "apply_opt",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "apply_opt",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt (Some <fun>) (Some 1)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some false)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt (Some <fun>) (Some 5)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some true)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt (Some <fun>) None",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt None (Some 3)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt None None",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "apply_opt",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt (Some <fun>) (Some true)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 1)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt (Some <fun>) (Some false)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 2)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt (Some <fun>) None",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt None (Some true)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "apply_opt None None",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711472.460782
+    },
+    "base_option_2": {
+      "grade": 100,
+      "solution": "let multiply a b_opt = \n  match b_opt with \n  |None -> None\n  |Some b_opt -> Some(a*b_opt)\n",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "multiply",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "multiply",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "multiply 8 (Some 2)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 16)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "multiply 4 (Some 2)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 8)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "multiply 8 None",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "multiply 0 (Some 2)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 0)",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "multiply 0 None",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711399.021629
+    },
+    "base_types_somme": {
+      "grade": 100,
+      "solution": "let description address =\n  match address with\n  | Email mail ->\n      \"email\"\n  | Telephone (country_code, nombre)->\n      \"telephone\"",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "description",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "description",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "description (Email \"gabriel.scherer@gmail.com\")",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "\"email\"",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "description (Telephone (33, \"123456789\"))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "\"telephone\"",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711696.67399
+    },
+    "base_types_somme_2": {
+      "grade": 100,
+      "solution": "let signe a =\n  if a > 0\n  then Strictement_positif\n  else if a <0 \n  then Strictement_negatif\n  else Nul\n  \n                          \nlet positif signe =\n  match signe with\n  | Strictement_positif -> true\n  | Nul -> true\n  | Strictement_negatif -> false",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "signe",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "signe",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "signe 3",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "Strictement_positif",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "signe 0",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "Nul",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "signe -1",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "Strictement_negatif",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "signe -2",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "Strictement_negatif",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "signe 2",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "Strictement_positif",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "positif",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "positif",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "positif Strictement_positif",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "true",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "positif Strictement_negatif",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "false",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "positif Nul",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "true",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711718.04184
+    },
+    "base_types_somme_3": {
+      "grade": 100,
+      "solution": "let prix boisson = \n  match boisson with \n  |Cafe  -> 2\n  |Jus (Petit) -> 3 \n  |Jus (Grand) -> 5\n  |Eau (Plate, Petit) -> 0\n  |Eau (Plate, Grand) -> 0\n  |Eau (Gazeuse, Petit) -> 2\n  |Eau (Gazeuse, Grand) -> 3",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "prix",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "prix",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "prix Cafe",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "2",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "prix (Jus Petit)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "3",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "prix (Jus Grand)",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "5",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "prix (Eau (Plate, Petit))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "0",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "prix (Eau (Plate, Grand))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "0",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "prix (Eau (Gazeuse, Petit))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "2",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "prix (Eau (Gazeuse, Grand))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "3",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1637842123.159927
+    },
+    "recursion_list_append": {
+      "grade": 100,
+      "solution": "let rec append li1 li2 =\n  match li1 with\n  | [] -> li2\n  | p :: r -> p :: append r li2 ",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "append",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "append",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "append [1; 2] [3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[1; 2; 3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "append [] [3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "append [1; 2] []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[1; 2]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "append [] []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636710778.680324
+    },
+    "recursion_list_bases": {
+      "grade": 100,
+      "solution": "let rec length li =\n  match li with \n  |[] -> 0\n  |a :: rest -> 1 + length rest\n\n                  \nlet rec nth n li = \n  match li with\n  |[] -> None\n  |a :: rest -> \n      if n = 0 then Some a\n      else nth (n-1) rest\n          \n          \nlet last li =\n  let rec last' a li =\n    match li with\n    | [] -> Some a\n    | b :: rest ->\n        last' b rest\n  in\n  match li with\n  | [] -> None\n  | a :: rest -> last' a rest\n\n\n(*\nlet rec last li =\n  match li with\n  | [] -> None\n  | a :: rest ->\n      ( match last rest with\n        | None -> Some a\n        | Some last -> Some last\n      )\n*)\n",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "length",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "length",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "length ['m'; 'v'; 's'; 'd'; 'z'; 'h'; 'u'; 'i'; 't'; 's']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "10",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "length ['i'; 'g'; 'f'; 'p']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "4",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "length ['r'; 'i'; 'm'; 'a'; 'w'; 'm'; 'n'; 'f']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "8",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "length ['k'; 'x'; 'u'; 'v'; 'u']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "5",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "nth",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "nth",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "nth -2 ['c'; 't'; 'm'; 'x'; 'c'; 'g'; 'j']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "nth -2 ['a'; 'j']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "nth 3 ['t'; 'z'; 'o'; 't'; 'v'; 'h'; 'd']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 't')",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "nth 2 ['l'; 'w'; 'h'; 'x'; 'm'; 'b'; 'u'; 'c'; 's'; 'j']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 'h')",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "nth 3 []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "nth -2 ['v'; 'o'; 's'; 'b'; 'l'; 'd']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "last",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "last",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "last ['s'; 'k'; 'w'; 'a'; 'p'; 'd'; 'i']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 'i')",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "last []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "None",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "last ['d'; 'n'; 'e'; 'i'; 's'; 'f'; 'n'; 'j']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 'j')",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "last ['p'; 'd']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 'd')",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "last ['y'; 'a'; 'v'; 'a'; 'j']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 'j')",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "last ['q'; 'l']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Some 'l')",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636710922.027959
+    },
+    "recursion_list_filter": {
+      "grade": 100,
+      "solution": "let rec filter cond li =\n  match li with\n  |[] -> []\n  |a :: lb -> if cond a\n      then a :: filter cond lb\n      else filter cond lb\n          \nlet rec non_negative list = filter (fun x -> x >= 0) list",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "filter",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "filter",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "filter <fun> []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "filter <fun> [1; 2; 3; 4; 5; 6]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[4; 5; 6]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "filter <fun> [1; 2; 3; 4; 5; 6]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[2; 4; 6]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "filter <fun> [1; 2; 3; 4; 5; 6]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[1; 2; 3; 4; 5; 6]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "filter <fun> [1; 2; 3; 4; 5; 6]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "non_negative",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "non_negative",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "non_negative [1; -2; 3; -6; 8]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[1; 3; 8]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "non_negative []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "non_negative [-3]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "non_negative [5; 2; 0]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[5; 2; 0]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1638483857.983081
+    },
+    "recursion_list_fold_left": {
+      "grade": 100,
+      "solution": "let rec fold_left f acc l = \n  match l with \n  |[] -> acc\n  |x::s -> fold_left f (f acc x) s\n  \n             \nlet sum l = List.fold_left (fun acc l -> acc + l) 0 l\n    \n    ",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "fold_left",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "fold_left",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "fold_left <fun> [3; 4] [1; 2]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[2; 1; 3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "fold_left <fun> [] []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "sum",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "sum",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "sum [1; -2; 3; -6; 8]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "4",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "sum []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "0",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "sum [-3]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "-3",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "sum [5; 2; 0]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "7",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1639050108.600117
+    },
+    "recursion_list_fold_right": {
+      "grade": 100,
+      "solution": "let rec fold_right f l e =\n  match l with\n  |[] -> e\n  |a::r -> f a (fold_right f r e)\n             \nlet rec duplicate_each li = List.fold_right (fun elem acc -> elem::elem::acc) li []",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "fold_right",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "fold_right",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "fold_right <fun> [3; 4] [1; 2]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[3; 4; 1; 2]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "fold_right <fun> [] []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "duplicate_each",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "duplicate_each",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "duplicate_each []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "duplicate_each ['a']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "['a'; 'a']",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "duplicate_each ['a'; 'b'; 'c']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "['a'; 'a'; 'b'; 'b'; 'c'; 'c']",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "duplicate_each ['a'; 'a']",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "['a'; 'a'; 'a'; 'a']",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1638485441.992941
+    },
+    "recursion_list_map": {
+      "grade": 100,
+      "solution": "let rec map f list =\n  match list with \n  |[] -> list\n  |g::h -> f(g) ::map f(h)\n  \n             \nlet rec add_2_each list = \n  match list with \n  |[] -> []\n  |a :: b -> (a+2) :: add_2_each b",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "map",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "map",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "map <fun> []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "map <fun> [1; 2; 3]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[2; 3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "add_2_each",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "add_2_each",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "add_2_each [-5; 2; 0; 2; 3; -1; 3; 2; 0]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[-3; 4; 2; 4; 5; 1; 5; 4; 2]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "add_2_each []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "add_2_each [0; 1; 4; 1; -4; -4; 1; -5; 3]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[2; 3; 6; 3; -2; -2; 3; -3; 5]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "add_2_each [-5; 4; -5; -5; 1; -2; -5; -5]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[-3; 6; -3; -3; 3; 0; -3; -3]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "add_2_each []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1638383096.49394
+    },
+    "recursion_list_rev": {
+      "grade": 100,
+      "solution": "let rec rev_append li1 li2 = \n  match li1 with \n  |[] -> li2\n  |p::r -> rev_append r (p::li2)\n             \nlet rev li = \n  let rec rev_append li1 li2 = \n    match li1 with \n    |[] -> li2\n    |p::r -> rev_append r (p::li2)\n  in rev_append li []\n  ",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "rev",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "rev",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "rev [1; 2; 3]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[3; 2; 1]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "rev [1]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[1]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "rev []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "rev_append",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "rev_append",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "rev_append [1; 2] [3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[2; 1; 3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "rev_append [] [3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[3; 4]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "rev_append [1; 2] []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[2; 1]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "rev_append [] []",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636710706.069707
+    },
+    "recursion_moves": {
+      "grade": 100,
+      "solution": "let rec count_moves m =\n  match m with\n  | Done -> 0\n  | Slide (v, chemin) -> 1 + count_moves chemin\n  | Goto (p, chemin) -> 1 + count_moves chemin \n\n  \nlet rec end_point depart m =\n  match m with\n  |Done -> depart\n  |Slide (v, chemin) -> let point = slide depart v in end_point point chemin\n  |Goto (p, chemin) -> end_point p chemin\n  \n(*  \nlet rec end_point point m = \n  match m with\n  |Done -> point\n  |Goto (p, reste) -> end_point p reste\n  |Slide (v, reste) -> end_point (slide point v) reste\n*)\n\nlet rec points p moves =\n  match moves with\n  |Done -> [p]\n  |Goto (point, chemin) -> p :: points point chemin\n  |Slide (vect, chemin) -> p::points (slide p vect) chemin\n                           \n",
+      "report": [
+        {
+          "section": [
+            {
+              "text": "count_moves",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "count_moves",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "count_moves Done",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "0",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "count_moves (Slide (Vec (0, 0), Done))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "1",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "count_moves (Goto (Point (0, 0), Done))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "1",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "count_moves (Slide (Vec (1, 1), Goto (Point (0, 0), Done)))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "2",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "end_point",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "end_point",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "end_point (Point (3, -2)) Done",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Point (3, -2))",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "end_point (Point (3, -2)) (Slide (Vec (1, 3), Done))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Point (4, 1))",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "end_point (Point (3, -2)) (Goto (Point (5, 0), Done))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Point (5, 0))",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "end_point (Point (3, -2)) (Slide (Vec (1, 1), Goto (Point (3, 2), Done)))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Point (3, 2))",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "end_point (Point (3, -2)) (Goto (Point (3, 2), Slide (Vec (1, 1), Done)))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "(Point (4, 3))",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        },
+        {
+          "section": [
+            {
+              "text": "points",
+              "display": "code"
+            }
+          ],
+          "contents": [
+            {
+              "message": [
+                {
+                  "text": "Found"
+                },
+                {
+                  "text": "points",
+                  "display": "code"
+                },
+                {
+                  "text": "with compatible type."
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "points (Point (3, -2)) Done",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[Point (3, -2)]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "points (Point (3, -2)) (Slide (Vec (1, 3), Done))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[Point (3, -2); Point (4, 1)]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "points (Point (3, -2)) (Goto (Point (5, 0), Done))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[Point (3, -2); Point (5, 0)]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "points (Point (3, -2)) (Slide (Vec (1, 1), Goto (Point (3, 2), Done)))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[Point (3, -2); Point (4, -1); Point (3, 2)]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            },
+            {
+              "message": [
+                {
+                  "text": "Computing"
+                },
+                {
+                  "text": "points (Point (3, -2)) (Goto (Point (3, 2), Slide (Vec (1, 1), Done)))",
+                  "display": "code"
+                }
+              ],
+              "result": "informative"
+            },
+            {
+              "message": [
+                {
+                  "text": "Correct value"
+                },
+                {
+                  "text": "[Point (3, -2); Point (3, 2); Point (4, 3)]",
+                  "display": "code"
+                }
+              ],
+              "result": 1
+            }
+          ]
+        }
+      ],
+      "mtime": 1636711148.500911
+    }
+  },
+  "exercise-toplevel-histories": {
+    "recursion_list_rev": {
+      "phrases": [
+        "let rec rev li = match li with ",
+        "let rec rev li = match li with \n |[]->[]\n |pla ::rla  -> rev_append rla (pla :: lb)",
+        "let rec rev li = match li with \n |[]->[]\n |pla ::rla  -> rev rla (pla :: lb)"
+      ],
+      "mtime": 1636711072.972607
+    }
+  }
+}
