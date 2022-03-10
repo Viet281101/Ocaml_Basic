@@ -1,7 +1,9 @@
 type 'a truc = 
   |Rien
   |Un_truc of 'a
-                  
+    
+    
+    
 let rec nth pos list =
   match list with 
   |[] -> Rien
